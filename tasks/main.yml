@@ -1,0 +1,22 @@
+---
+
+- name: establish package
+  become: yes
+  package:
+    name: snapd
+    state: latest
+
+- name: establish configuration directory
+  become: yes
+  file:
+    path: "{{ configuration_file_path | dirname }}"
+    state: directory
+  when: configuration 
+
+- name: introduce configuration
+  template:
+    src: snapd.conf.j2
+    dest: "{{ configuration_file_path }}"
+    mode: "u=rwx,go=r" 
+  notify: restart snapd
+  when: configuration 
