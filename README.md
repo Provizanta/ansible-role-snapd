@@ -13,7 +13,7 @@ Role
 
 Configuration file contents in YAML format.
 
-    configuration: <dict structure representing the configuration file contents>
+    configuration: <dict, the entire configuration>
 
 Dependencies
 ------------

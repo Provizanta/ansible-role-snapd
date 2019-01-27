@@ -5,18 +5,30 @@
   package:
     name: snapd
     state: latest
+  tags: install
 
 - name: establish configuration directory
   become: yes
   file:
     path: "{{ configuration_file_path | dirname }}"
     state: directory
-  when: configuration 
+  tags: install
+
+- name: enable snapd
+  become: yes
+  systemd:
+    name: snapd
+    enabled: yes
+    state: started
+  tags: install
 
 - name: introduce configuration
+  become: yes
+  when: configuration is defined
   template:
     src: snapd.conf.j2
     dest: "{{ configuration_file_path }}"
     mode: "u=rwx,go=r" 
   notify: restart snapd
-  when: configuration 
+  tags: configure
+
