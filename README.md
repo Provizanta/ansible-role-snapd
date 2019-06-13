@@ -1,6 +1,8 @@
 Ansible role: snapd
 =========
 
+[![Build Status](https://travis-ci.com/Provizanta/ansible-role-snapd.svg?branch=master)](https://travis-ci.com/Provizanta/ansible-role-snapd)
+
 Install and configure the snapd service (snap daemon).
 
 Requirements

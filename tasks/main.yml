@@ -4,7 +4,7 @@
   become: true
   package:
     name: snapd
-    state: latest
+    state: present
   tags: install
 
 - name: establish configuration directory
