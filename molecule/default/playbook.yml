@@ -1,0 +1,25 @@
+---
+
+- name: Converge
+  hosts: all
+  roles:
+    - role: snapd
+      vars:
+        configuration:
+          refresh:
+            metered: "hold"
+            timer: "sun5,20:00-23:00"
+            retain: 2
+
+  post_tasks:
+    - name: bashrc.d directory should be present
+      block:
+        - name: check file presence
+          stat:
+            path: "/etc/snap/snapd.conf"
+          register: r
+        - name: evaluate file presence
+          assert:
+            that:
+              - r.stat.exists
+            fail_msg: snap configuration directory should be present

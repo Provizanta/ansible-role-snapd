@@ -1,34 +1,36 @@
 ---
 
 - name: establish package
-  become: yes
+  become: true
   package:
     name: snapd
     state: latest
   tags: install
 
 - name: establish configuration directory
-  become: yes
+  become: true
   file:
     path: "{{ configuration_file_path | dirname }}"
     state: directory
-  tags: install
+  tags:
+    - install
+    - configure
 
-- name: enable snapd
-  become: yes
-  systemd:
-    name: snapd
-    enabled: yes
-    state: started
-  tags: install
-
-- name: introduce configuration
-  become: yes
+- name: establish configuration
   when: configuration is defined
+  become: true
   template:
     src: snapd.conf.j2
     dest: "{{ configuration_file_path }}"
-    mode: "u=rwx,go=r" 
+    mode: "u=rwx,go=r"
   notify: restart snapd
   tags: configure
 
+- name: systemd | enable snapd
+  when: ansible_service_mgr == 'systemd'
+  become: true
+  systemd:
+    name: snapd
+    enabled: true
+    state: started
+  tags: install

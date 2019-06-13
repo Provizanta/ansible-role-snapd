@@ -1,2 +1,3 @@
-configuration_file_path: /etc/snap/snapd.conf
+---
 
+configuration_file_path: /etc/snap/snapd.conf

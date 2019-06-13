@@ -1,19 +1,17 @@
-snapd
+Ansible role: snapd
 =========
 
-snapd service (snap daemon).
+Install and configure the snapd service (snap daemon).
 
 Requirements
 ------------
 
 None
 
-Role 
+Role variables
 --------------
 
-Configuration file contents in YAML format.
-
-    configuration: <dict, the entire configuration>
+    configuration: <dict, the entire daemon configuration in YAML format>
 
 Dependencies
 ------------
@@ -39,4 +37,4 @@ MIT
 Author Information
 ------------------
 
-Tibor Csoka
+Tibor Csóka
