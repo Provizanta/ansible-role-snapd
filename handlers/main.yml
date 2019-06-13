@@ -1,6 +1,16 @@
 ---
 
 - name: restart snapd
+  become: true
   service:
     name: snapd
     state: restarted
+
+- name: enable snapd service
+  when: ansible_service_mgr == 'systemd'
+  become: true
+  systemd:
+    name: snapd
+    enabled: true
+    state: started
+  tags: install

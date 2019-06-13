@@ -9,17 +9,13 @@ env:
   global:
     - ROLE_NAME: snapd
   matrix:
-    - MOLECULE_DISTRO: ubuntu1604
     - MOLECULE_DISTRO: ubuntu1804
-    - MOLECULE_DISTRO: centos6
     - MOLECULE_DISTRO: centos7
-    - MOLECULE_DISTRO: debian8
     - MOLECULE_DISTRO: debian9
     - MOLECULE_DISTRO: debian10
     - MOLECULE_DISTRO: fedora24
     - MOLECULE_DISTRO: fedora27
     - MOLECULE_DISTRO: fedora29
-    - MOLECULE_DISTRO: amazonlinux2
 
 install:
   - pip install molecule docker

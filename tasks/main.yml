@@ -5,6 +5,7 @@
   package:
     name: snapd
     state: present
+  notify: enable snapd service
   tags: install
 
 - name: establish configuration directory
@@ -25,12 +26,3 @@
     mode: "u=rwx,go=r"
   notify: restart snapd
   tags: configure
-
-- name: systemd | enable snapd
-  when: ansible_service_mgr == 'systemd'
-  become: true
-  systemd:
-    name: snapd
-    enabled: true
-    state: started
-  tags: install
