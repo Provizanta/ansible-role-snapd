@@ -28,7 +28,7 @@ galaxy_info:
         - 7
 
   galaxy_tags:
-    - shell
-    - bash
+    - snap
+    - package
 
 dependencies: []
