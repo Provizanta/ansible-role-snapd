@@ -11,18 +11,16 @@
 - name: establish configuration directory
   become: true
   file:
-    path: "{{ configuration_file_path | dirname }}"
+    path: "{{ snapd_configuration_file_path | dirname }}"
     state: directory
-  tags:
-    - install
-    - configure
+  tags: install, configure
 
 - name: establish configuration
-  when: configuration is defined
+  when: snapd_configuration is defined
   become: true
   template:
     src: snapd.conf.j2
-    dest: "{{ configuration_file_path }}"
-    mode: "u=rwx,go=r"
+    dest: "{{ snapd_configuration_file_path }}"
+    mode: "u=rw,go=r"
   notify: restart snapd
   tags: configure

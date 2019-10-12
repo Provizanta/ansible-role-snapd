@@ -13,7 +13,9 @@ None
 Role variables
 --------------
 
-    configuration: <dict, the entire daemon configuration in YAML format>
+These variables can be defined:
+
+    snapd_configuration: <dict, the entire daemon configuration in YAML format>
 
 Dependencies
 ------------
@@ -23,12 +25,15 @@ None
 Example Playbook
 ----------------
 
-    - hosts: localhost
+    - name: Converge
+      hosts: all
       roles:
         - role: snapd
           vars:
-            configuration:
+            snapd_configuration:
               refresh:
+                metered: "hold"
+                timer: "sun5,20:00-23:00"
                 retain: 2
 
 License
