@@ -11,6 +11,7 @@ env:
   global:
     - ROLE_NAME: snapd
   matrix:
+    - MOLECULE_DISTRO: ubuntu2004
     - MOLECULE_DISTRO: ubuntu1804
     - MOLECULE_DISTRO: centos7
     - MOLECULE_DISTRO: debian9
