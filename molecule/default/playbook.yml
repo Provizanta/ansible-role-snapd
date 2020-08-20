@@ -3,7 +3,7 @@
 - name: Converge
   hosts: all
   roles:
-    - role: snapd
+    - role: ansible-role-snapd
       vars:
         snapd_configuration:
           refresh:
