@@ -2,6 +2,7 @@
 
 galaxy_info:
   role_name: snapd
+  namespace: provizanta
   author: Tibor Csóka
   description: |
     "Setup snapd (snap daemon) for Linux snap package management"
